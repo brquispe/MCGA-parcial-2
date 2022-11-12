@@ -3,13 +3,13 @@ import Navlink from './Navlink';
 
 const Header = () => {
   return (<header className={styles.header}>
-    <navbar>
+    <nav>
       <ul>
         <li>
           <Navlink to="/" label="Inicio"/>
         </li>
       </ul>
-    </navbar>
+    </nav>
   </header>)
 }
 
