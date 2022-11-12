@@ -1,11 +1,15 @@
-import Footer from "./Footer";
-import Header from "./Header";
+import styles from './Layout.module.css';
+import Body from "./Body/Body";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 
 const Layout = ({ children }) => {
   return (
     <div>
       <Header/>
-      { children }
+      <Body>
+        {children}
+      </Body>
       <Footer />
     </div>
   )
