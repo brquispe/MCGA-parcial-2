@@ -2,7 +2,7 @@ import { setLoading, dismissLoading, setProducts } from "./actions";
 
 export const getProducts = async (dispatch) => {
   dispatch(setLoading());
-  let response = await fetch("http://localhost:4000/api/products");
+  let response = await fetch("TBD");
   const prod = await response?.json();
   if(response.status === 200){
     console.log(prod.data)
