@@ -1,8 +1,10 @@
 import { setLoading, dismissLoading, setProducts } from "./actions";
 
-export const getProducts = async (dispatch) => {
+const pURL = process.env.REACT_APP_API_URL;
+
+export const getProducts = () => async (dispatch) => {
   dispatch(setLoading());
-  let response = await fetch("TBD");
+  let response = await fetch(`${pURL}/products`);
   const prod = await response?.json();
   if(response.status === 200){
     console.log(prod.data)
