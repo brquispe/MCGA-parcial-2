@@ -1,0 +1,4 @@
+// export const SHOW_PRODUCTS = 'SHOW_PRODUCTS';
+export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const SET_LOADING = 'SET_LOADING';
+export const DISMISS_LOADING = 'DISMISS_LOADING';
