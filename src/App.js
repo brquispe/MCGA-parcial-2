@@ -1,7 +1,10 @@
-function App() {
+import { Route, Routes } from "react-router-dom";
+
+const App = () => {
   return (
-    <div className="App">
-    </div>
+      <Routes>
+        <Route path="/" element={<div>Hello, world!</div>} />
+      </Routes>
   );
 }
 
