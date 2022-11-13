@@ -54,3 +54,10 @@ export const updateProduct = (productId, data) => async (dispatch) => {
   const product = await response?.json();
   return product;
 };
+
+export const removeProduct = (productId) => async (dispatch) => {
+  dispatch(setLoading());
+  const response = await fetch(`${pURL}/${productId}`, { method: 'DELETE' });
+  dispatch(dismissLoading());
+  return response.status === 204
+}
