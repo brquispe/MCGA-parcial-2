@@ -3,6 +3,7 @@ import Layout from "./shared/components/Layout";
 import Home from "./shared/pages/Home";
 import Products from './shared/pages/Products';
 import Product from './shared/pages/Product';
+import 'App.css';
 
 const App = () => {
   return (

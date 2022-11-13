@@ -1,40 +1,43 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getProducts } from "../../redux/Products/thunks";
-import ProdForm from "../../../Products/components/prodForm";
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getProducts, removeProduct } from 'Products/store/thunks';
+import { useProducts } from 'Products/store/reducer';
+import ProductCard from 'Products/components/ProductCard';
+import LoadingSpinner from 'shared/components/LoadingSpinner';
 import styles from './prod.module.css';
 
 const Products = () => {
+  document.title = 'Productos';
   const dispatch = useDispatch();
-  const { products, isLoadingProducts } = useSelector((state) => state.products);
-  console.log(String(isLoadingProducts))
+
+  const { products, isLoadingProducts } = useProducts();
   useEffect(() => {
-    dispatch(getProducts(dispatch));
-  }, [])
+    dispatch(getProducts());
+  }, [dispatch]);
 
-//   return (<div>
-//     <h1>Productos</h1>
-//     {isLoadingProducts && <p>Cargando...</p>}
-//   </div>)
-// }
+  const onRemoveProduct = (productId) => {
+    dispatch(removeProduct(productId));
+  };
 
-if (isLoadingProducts) return <div>cargando</div>
-   return (
+  return (
     <div>
-        <h1>Productos</h1>
-        <table>    
-        <tr><th>Id Code</th><th>Name</th><th>Price</th><th>Provider</th></tr>
-        {products.map((product) =>         
-          <tr>
-            <td>{product._id}</td>
-            <td>{product.name}</td>
-            <td>{product.price}</td>
-            <td>{product.provider.name}</td>
-          </tr>
-        )}      
-      </table>
+      {isLoadingProducts ? (
+        <div className={styles.centerLoadingSpinner}>
+          <LoadingSpinner />
+        </div>
+      ) : (
+        <div className={styles.productDeck}>
+          {products.map((product) => (
+            <ProductCard
+              product={product}
+              key={product._id}
+              onRemoveProduct={() => onRemoveProduct(product._id)}
+            />
+          ))}
+          {products.length === 0 && <h3>No se encontraron productos</h3>}
+        </div>
+      )}
     </div>
-   )
-   }
+  );
+};
 export default Products;
