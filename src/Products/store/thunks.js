@@ -2,9 +2,9 @@ import { setLoading, dismissLoading, setProducts } from './actions';
 
 const pURL = process.env.REACT_APP_API_URL;
 
-export const getProducts = () => async (dispatch) => {
+export const getProducts = (showDeleted = false) => async (dispatch) => {
   dispatch(setLoading());
-  let response = await fetch(`${pURL}/products`);
+  let response = await fetch(`${pURL}/products?showDeleted=${showDeleted}`);
   const prod = await response?.json();
   if (response.status === 200) {
     dispatch(dismissLoading());
