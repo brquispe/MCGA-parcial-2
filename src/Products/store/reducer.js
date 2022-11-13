@@ -38,4 +38,10 @@ const reducer = (state = INITIAL_STATE, action) => {
   }
 };
 
+/**
+ * @returns {ProductsState}
+ */
+export const useProducts = () => {
+  return useSelector(state => state.products);
+}
 export default reducer;
