@@ -5,7 +5,7 @@ import styles from './product.module.css';
 const ProdInputForm = () => {
     return (
       <div className={styles.form}>
-        <div>FORMULARIO</div>
+        <div className={styles.divForm}>FORMULARIO</div>
         <ProdForm/>
       </div>
     );
