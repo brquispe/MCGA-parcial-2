@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './prodform.module.css';
-import ProdInput from '../prodInput';
-import ProdButton from '../prodButton';
+import ProdInput from '../../../shared/components/prodInput';
+import ProdButton from '../../../shared/components/prodButton';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ const ProdForm = () => {
               required: 'contraseña obligatoria' 
               }} />
         {errors.Password?.message}
-        {/* <ProdButton text='Submit' onClick={() => null} type='submit' /> */}
+        <ProdButton text='Submit' onClick={() => null} type='submit' />
       </form>
     );
   };
