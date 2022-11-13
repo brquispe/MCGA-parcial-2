@@ -37,7 +37,7 @@ const ProductCard = ({ product, onRemoveProduct }) => {
         </p>
         <p>
           <strong>Proveedor: </strong>
-          {product.provider.name}
+          {product.provider?.name}
         </p>
       </div>
     </div>
