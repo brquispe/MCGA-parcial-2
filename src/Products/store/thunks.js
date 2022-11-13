@@ -33,6 +33,7 @@ export const addProduct = (data) => async (dispatch) => {
     return;
   }
   const product = await response?.json();
+  dispatch(getProducts());
   return product;
 };
 
@@ -52,12 +53,18 @@ export const updateProduct = (productId, data) => async (dispatch) => {
   }
 
   const product = await response?.json();
+  dispatch(getProducts());
   return product;
 };
 
 export const removeProduct = (productId) => async (dispatch) => {
-  dispatch(setLoading());
-  const response = await fetch(`${pURL}/${productId}`, { method: 'DELETE' });
-  dispatch(dismissLoading());
-  return response.status === 204
+  try {
+    dispatch(setLoading());
+    const response = await fetch(`${pURL}/products/${productId}`, { method: 'DELETE' });
+    dispatch(dismissLoading());
+    dispatch(getProducts());
+    return response.status === 204
+  } catch (error) {
+    dispatch(dismissLoading());
+  }
 }
