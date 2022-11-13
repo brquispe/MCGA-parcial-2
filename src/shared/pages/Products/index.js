@@ -23,9 +23,6 @@ if (isLoadingProducts) return <div>cargando</div>
    return (
     <div>
         <h1>Productos</h1>
-        <div className={styles.container}>
-          <ProdForm/>
-        </div>
         <table>    
         <tr><th>Id Code</th><th>Name</th><th>Price</th><th>Provider</th></tr>
         {products.map((product) =>         
