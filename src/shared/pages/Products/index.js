@@ -1,15 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProducts } from "../../redux/Products/thunks";
+import { addProduct, getProducts } from "../../../Products/store/thunks";
 
 const Products = () => {
   const dispatch = useDispatch();
   const { products, isLoadingProducts } = useSelector((state) => state.products);
-  console.log(String(isLoadingProducts))
   useEffect(() => {
-    dispatch(getProducts(dispatch));
-  }, [])
+    dispatch(getProducts());
+    const product = {
+      name: 'Mouse',
+      price: 4500
+    };
+    // dispatch(addProduct(product));
+  }, [dispatch])
 
 //   return (<div>
 //     <h1>Productos</h1>
@@ -21,6 +25,9 @@ if (isLoadingProducts) return <div>cargando</div>
    return (
     <div>
         <h1>Productos</h1>
+        <ul>
+          {products.map(product => (<li key={product._id}>{product.name}</li>))}
+        </ul>
     </div>
    )
    }
