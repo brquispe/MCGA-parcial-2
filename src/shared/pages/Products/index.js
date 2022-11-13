@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getProducts } from 'Products/store/thunks';
+import { getProducts, removeProduct } from 'Products/store/thunks';
 import { useProducts } from 'Products/store/reducer';
 import ProductCard from 'Products/components/ProductCard';
 import LoadingSpinner from 'shared/components/LoadingSpinner';
@@ -16,7 +16,7 @@ const Products = () => {
   }, [dispatch]);
 
   const onRemoveProduct = (productId) => {
-    console.log(productId);
+    dispatch(removeProduct(productId));
   };
 
   return (
