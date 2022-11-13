@@ -1,0 +1,10 @@
+.productDeck {
+  display: flex;
+  gap: 1rem;
+}
+
+.centerLoadingSpinner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
