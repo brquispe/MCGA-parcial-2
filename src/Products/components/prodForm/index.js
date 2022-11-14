@@ -60,8 +60,7 @@ const ProdForm = ({ product }) => {
         name="name"
         label="Nombre"
         rules={{
-          required: 'Se requiere este valor',
-          pattern: { minlength: 5, message: 'No cumple con la el patron' },
+          required: 'Nombre requerido'
         }}
       />
       {errors.name?.message}
@@ -73,7 +72,7 @@ const ProdForm = ({ product }) => {
         name="price"
         label="Precio"
         rules={{
-          required: 'Se requiere este valor',
+          required: 'Precio requerido',
           min: {
             value: 0,
             message: 'Debe ser mayor o igual a 0'
