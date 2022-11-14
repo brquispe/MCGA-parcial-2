@@ -1,10 +1,16 @@
-import React from 'react'
+const ProdInput = ({ register, type, placeholder, name, rules, label }) => {
+  return (
+    <>
+      <label htmlFor={name}>{label || placeholder}</label>
+      <input
+        {...register(`${name}`, rules)}
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        id={name}
+      />
+    </>
+  );
+};
 
-const ProdInput = ({register, type, placeholder, name, rules}) => {
-    return (
-      <input {...register(`${name}`, rules)} type={type} placeholder={placeholder} name={name}>
-      </input>
-    );
-  };
-  
-  export default ProdInput;
+export default ProdInput;
