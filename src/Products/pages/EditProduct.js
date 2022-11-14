@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from 'shared/components/LoadingSpinner';
+import styles from './EditProduct.module.css';
 
 const EditProduct = () => {
   document.title = 'Editar producto';
@@ -16,7 +17,7 @@ const EditProduct = () => {
   }, [dispatch, productId]);
 
   return (
-    <div>
+    <div className={styles.editProductPage}>
       <h1>Editar producto</h1>
       {isLoadingProducts && <LoadingSpinner />}
       {product && <ProdForm product={product} />}
