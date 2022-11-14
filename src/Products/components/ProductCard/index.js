@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 /**
  * @param {{ product: { _id: string; name: string; price: number; provider: { _id: string, name: string } }, onRemoveProduct: (productId: string) => boolean }}
@@ -27,14 +28,14 @@ const ProductCard = ({ product, onRemoveProduct }) => {
               menuIsVisible ? styles['dropdown-content--visible'] : ''
             }`}
           >
-            <a
+            <Link
               title="Editar"
-              href={`/products/${product._id}`}
+              to={`/products/edit/${product._id}`}
               className={styles.btnAction}
             >
               <span>&#9998;</span>
               <span>Editar</span>
-            </a>
+            </Link>
             <button
               title="Remover"
               onClick={() => onRemoveProduct(product._id)}
