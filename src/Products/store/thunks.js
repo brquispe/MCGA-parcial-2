@@ -1,4 +1,4 @@
-import { setLoading, dismissLoading, setProducts, setProviders } from './actions';
+import { setLoading, dismissLoading, setProducts, setProviders, setProduct } from './actions';
 
 const pURL = process.env.REACT_APP_API_URL;
 
@@ -90,6 +90,21 @@ export const getProviders = () => async (dispatch) => {
     const providers = await response.json();
     dispatch(dismissLoading());
     dispatch(setProviders(providers.data));
+  } catch (error) {
+    dispatch(dismissLoading());
+  }
+}
+
+export const getProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    const response = await fetch(`${pURL}/products/${productId}`);
+    if (!response.ok) {
+      throw new Error('No se pudo obtener el producto');
+    }
+    const product = await response.json();
+    dispatch(dismissLoading());
+    dispatch(setProduct(product.data));
   } catch (error) {
     dispatch(dismissLoading());
   }

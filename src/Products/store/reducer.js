@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { DISMISS_LOADING, SET_LOADING, SET_PRODUCTS, SET_PROVIDERS } from './types';
+import { DISMISS_LOADING, SET_LOADING, SET_PRODUCT, SET_PRODUCTS, SET_PROVIDERS } from './types';
 
 /**
  * @typedef {{ _id: string; name: string; price: string; provider: {_id: string} }} Product
  * @typedef {{ _id: string; name: string; }} Provider
- * @typedef {Readonly<{products: Product[]; isLoadingProducts: boolean; providers: Provider[]}>} ProductsState
+ * @typedef {Readonly<{products: Product[]; isLoadingProducts: boolean; providers: Provider[]; product?: Product}>} ProductsState
  */
 
 /**
@@ -13,7 +13,8 @@ import { DISMISS_LOADING, SET_LOADING, SET_PRODUCTS, SET_PROVIDERS } from './typ
 const INITIAL_STATE = {
   products: [],
   isLoadingProducts: false,
-  providers: []
+  providers: [],
+  product: undefined
 };
 
 /**
@@ -40,6 +41,12 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         providers: action.payload
+      }
+    case SET_PRODUCT:
+      console.log(action.payload)
+      return {
+        ...state,
+        product: action.payload
       }
     default:
       return state;

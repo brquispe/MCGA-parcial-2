@@ -3,6 +3,7 @@ import {
   SET_PRODUCTS,
   DISMISS_LOADING,
   SET_PROVIDERS,
+  SET_PRODUCT,
 } from './types';
 
 export const setProducts = (products) => {
@@ -36,3 +37,10 @@ export const setProviders = (providers) => {
     payload: providers,
   };
 };
+
+export const setProduct = (product) => {
+  return {
+    type: SET_PRODUCT,
+    payload: product
+  }
+}
