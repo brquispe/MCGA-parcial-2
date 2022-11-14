@@ -23,6 +23,7 @@ const SelectInput = ({
           <label htmlFor={field.name}>{label || field.name}</label>
           <select
             {...props}
+            id={field.name}
             name={field.name}
             title={label || field.name}
             onChange={field.onChange}
