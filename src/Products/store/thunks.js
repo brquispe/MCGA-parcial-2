@@ -52,6 +52,9 @@ export const updateProduct = (productId, data) => async (dispatch) => {
     let response = await fetch(`${pURL}/products/${productId}`, {
       method: 'PUT',
       body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      }, 
     });
     if (!response.ok) {
       dispatch(dismissLoading());
