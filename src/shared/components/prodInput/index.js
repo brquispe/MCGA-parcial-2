@@ -1,6 +1,16 @@
 import styles from './Input.module.css';
 
-const ProdInput = ({ register, type, placeholder, name, rules, label, className, ...props }) => {
+const ProdInput = ({
+  register,
+  type,
+  placeholder,
+  name,
+  rules,
+  label,
+  className,
+  errors,
+  ...props
+}) => {
   return (
     <div className={`${styles.formControl} ${className || ''}`}>
       <label htmlFor={name}>{label || placeholder}</label>
@@ -11,7 +21,11 @@ const ProdInput = ({ register, type, placeholder, name, rules, label, className,
         placeholder={placeholder}
         name={name}
         id={name}
+        className={styles.input}
       />
+      {errors?.[name] && (
+        <span className={styles.errorInputMessage}>{errors[name].message}</span>
+      )}
     </div>
   );
 };
