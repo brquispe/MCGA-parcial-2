@@ -62,8 +62,8 @@ const ProdForm = ({ product }) => {
         rules={{
           required: 'Nombre requerido'
         }}
+        errors={errors}
       />
-      {errors.name?.message}
 
       <ProdInput
         register={register}
@@ -78,8 +78,8 @@ const ProdForm = ({ product }) => {
             message: 'Debe ser mayor o igual a 0'
           },
         }}
+        errors={errors}
       />
-      {errors.price?.message}
 
       <SelectInput
         control={control}
