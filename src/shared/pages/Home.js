@@ -1,6 +1,8 @@
 import styles from './home.module.css';
 
 const Home = () => {
+  document.title = 'Inicio';
+
   return <div className={styles.home}>
     <h1>Bienvenido</h1>
     <h2>Universidad Abierta Interamericana</h2>
