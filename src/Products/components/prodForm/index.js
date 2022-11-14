@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import styles from './prodform.module.css';
 import ProdInput from '../../../shared/components/prodInput';
 import ProdButton from '../../../shared/components/prodButton';
@@ -10,18 +10,28 @@ import { addProduct, getProviders, updateProduct } from 'Products/store/thunks';
 import SelectInput from 'shared/components/SelectInput';
 
 const ProdForm = ({ product }) => {
+  const defaultValues = useMemo(
+    () => ({
+      name: product?.name || '',
+      price: product?.price || 0,
+      providerId: product?.provider || null,
+    }),
+    [product]
+  );
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    reset
   } = useForm({
-    defaultValues: {
-      name: product?.name || '',
-      price: product?.price || 0,
-      providerId: product?.provider || null,
-    },
+    defaultValues
   });
+
+  useEffect(() => {
+    reset(defaultValues)
+  }, [product, defaultValues, reset])
 
   const dispatch = useDispatch();
   const { providers, isLoadingProducts } = useProducts();
@@ -64,9 +74,9 @@ const ProdForm = ({ product }) => {
         label="Precio"
         rules={{
           required: 'Se requiere este valor',
-          pattern: {
-            value: /^[a-zA-Z0-9\.]*$/,
-            message: 'Debe ser un numero con decimal',
+          min: {
+            value: 0,
+            message: 'Debe ser mayor o igual a 0'
           },
         }}
       />
