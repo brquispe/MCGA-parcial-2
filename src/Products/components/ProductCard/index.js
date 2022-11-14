@@ -18,6 +18,7 @@ const ProductCard = ({ product, onRemoveProduct }) => {
           <button
             className={styles.actionButton}
             onClick={toggleMenuVisibility}
+            type="button"
           >
             ...
           </button>
