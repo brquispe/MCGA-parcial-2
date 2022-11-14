@@ -43,7 +43,6 @@ const reducer = (state = INITIAL_STATE, action) => {
         providers: action.payload
       }
     case SET_PRODUCT:
-      console.log(action.payload)
       return {
         ...state,
         product: action.payload
