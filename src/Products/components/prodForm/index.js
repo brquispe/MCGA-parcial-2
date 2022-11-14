@@ -6,14 +6,22 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useProducts } from 'Products/store/reducer';
-import { addProduct, getProviders } from 'Products/store/thunks';
+import { addProduct, getProviders, updateProduct } from 'Products/store/thunks';
+import SelectInput from 'shared/components/SelectInput';
 
-const ProdForm = () => {
+const ProdForm = ({ product }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    control,
+  } = useForm({
+    defaultValues: {
+      name: product?.name || '',
+      price: product?.price || 0,
+      providerId: product?.provider || null,
+    },
+  });
 
   const dispatch = useDispatch();
   const { providers, isLoadingProducts } = useProducts();
@@ -24,13 +32,17 @@ const ProdForm = () => {
 
   const navigate = useNavigate();
 
-  const submission = (product) => {
-    dispatch(addProduct(product));
+  const onSubmit = (data) => {
+    if (product) {
+      dispatch(updateProduct(product._id, data));
+    } else {
+      dispatch(addProduct(data));
+    }
     navigate('/products');
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(submission)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <ProdInput
         register={register}
         type="text"
@@ -60,23 +72,19 @@ const ProdForm = () => {
       />
       {errors.price?.message}
 
-      <select
+      <SelectInput
+        control={control}
         name="providerId"
-        id="provider"
-        {...register('providerId', { required: 'El proveedor es requerido' })}
-      >
-        <option></option>
-        {providers?.map((provider) => (
-          <option id={provider._id} key={provider._id} value={provider._id}>
-            {provider.name}
-          </option>
-        ))}
-      </select>
-      {errors.providerId?.message}
+        label="Proveedor"
+        rules={{ required: 'Proveedor requerido' }}
+        options={providers}
+        optionValue="_id"
+        optionLabel="name"
+        errors={errors}
+      />
 
       <ProdButton
-        text="Guardar"
-        onClick={() => null}
+        text={product ? 'Guardar' : 'Agregar'}
         type="submit"
         loading={isLoadingProducts}
       />
