@@ -10,3 +10,16 @@
 body {
   background-color: var(--color-light);
 }
+
+html, body, #root {
+  height: 100%;
+}
+
+a, h1, h2, h3, h4, h5, h6, p, span, button, input {
+  font-family: 'Montserrat';
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
