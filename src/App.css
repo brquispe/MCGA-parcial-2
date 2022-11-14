@@ -55,3 +55,9 @@ h5 {
   font-size: 1rem;
   font-weight: bold;
 }
+
+a.active {
+  color: var(--color-fifth);
+  font-weight: bold;
+  background-color: var(--color-primary);
+}

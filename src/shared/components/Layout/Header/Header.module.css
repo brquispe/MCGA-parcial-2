@@ -1,22 +1,23 @@
-ul{
-    display: flex;
-    flex-direction: row;
-    /* width: 200px; */
-    background-color: var(--color-fourth);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: larger;
+ul {
+  display: flex;
+  flex-direction: row;
+  /* width: 200px; */
+  background-color: var(--color-fourth);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
 }
 
-li{
-    padding: 15px;
+li {
+  padding: 15px;
 }
 
 .header {
-    width: 100%;
+  width: 100%;
 }
 
 .navlink {
-    text-decoration: none;
-    color: var(--color-light);
+  text-decoration: none;
+  color: var(--color-light);
+  border-radius: 5px;
+  padding: .25rem;
 }
-
