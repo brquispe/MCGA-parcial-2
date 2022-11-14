@@ -5,6 +5,7 @@ import { useProducts } from 'Products/store/reducer';
 import ProductCard from 'Products/components/ProductCard';
 import LoadingSpinner from 'shared/components/LoadingSpinner';
 import styles from './prod.module.css';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   document.title = 'Productos';
@@ -20,7 +21,11 @@ const Products = () => {
   };
 
   return (
-    <div>
+    <div className={styles.products}>
+      <div className={styles.heading}>
+        <h1>Productos</h1>
+        <Link className={styles.btnAdd} to="/products/add">+</Link>
+      </div>
       {isLoadingProducts ? (
         <div className={styles.centerLoadingSpinner}>
           <LoadingSpinner />
