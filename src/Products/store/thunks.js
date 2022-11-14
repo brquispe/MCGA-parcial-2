@@ -1,4 +1,4 @@
-import { setLoading, dismissLoading, setProducts } from './actions';
+import { setLoading, dismissLoading, setProducts, setProviders } from './actions';
 
 const pURL = process.env.REACT_APP_API_URL;
 
@@ -79,3 +79,18 @@ export const removeProduct = (productId) => async (dispatch) => {
     dispatch(dismissLoading());
   }
 };
+
+export const getProviders = () => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    const response = await fetch(`${pURL}/providers`);
+    if (!response.ok) {
+      throw new Error('No se pudo obtener los proveedores');
+    }
+    const providers = await response.json();
+    dispatch(dismissLoading());
+    dispatch(setProviders(providers.data));
+  } catch (error) {
+    dispatch(dismissLoading());
+  }
+}
