@@ -6,6 +6,7 @@ button.btn {
   border-radius: 4px;
   transition: all 0.3s;
   display: flex;
+  align-items: center;
 }
 
 button.btn:hover {
@@ -16,4 +17,8 @@ button.btn:disabled {
   background-color: var(--color-third);
   opacity: 50%;
   cursor: auto;
+}
+
+.btn__label {
+  width: 100%;
 }
