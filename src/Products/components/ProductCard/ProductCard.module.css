@@ -16,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   color: var(--color-fourth);
+  /* height: 2rem; */
 }
 
 .productCard__header h3 {
@@ -36,6 +37,8 @@
   transition: all .3s;
   color: var(--color-third);
   font-size: 1.5rem;
+  width: auto;
+  margin: 0;
 }
 
 .actionButton:hover {
@@ -45,7 +48,7 @@
 
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .dropdown-content {
@@ -77,10 +80,10 @@
 
 .btnAction {
   background-color: var(--color-light);
-  /* width: 100%; */
   display: flex;
   font-size: 1rem;
   padding: .5rem 1rem;
+  margin: 0;
 }
 
 .btnAction:hover {
