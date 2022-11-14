@@ -12,3 +12,12 @@
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
+.addProductPage {
+  display: flex;
+  gap: 1rem;
+  flex-flow: column wrap;
+  padding: 1rem 2rem;
+  width: 70%;
+  margin: auto;
+}

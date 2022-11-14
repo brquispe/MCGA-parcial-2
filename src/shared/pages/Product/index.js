@@ -5,8 +5,8 @@ const ProdInputForm = () => {
   document.title = 'Agregar producto';
 
   return (
-    <div className={styles.form}>
-      <h1 className={styles.divForm}>Agregar producto</h1>
+    <div className={styles.addProductPage}>
+      <h1>Agregar producto</h1>
       <ProdForm />
     </div>
   );
