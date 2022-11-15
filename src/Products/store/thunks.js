@@ -16,9 +16,6 @@ export const getProducts = (showDeleted = false) => async (dispatch) => {
   }
 };
 
-/**
- * @param {{ name: string; price: number; providerId?: string }} data
- */
 export const addProduct = (data) => async (dispatch) => {
   try {
     dispatch(setLoading());
@@ -42,10 +39,6 @@ export const addProduct = (data) => async (dispatch) => {
   }
 };
 
-/**
- * @param { string } productId
- * @param {{ name?: string; price?: number; providerId?: string }} data
- */
 export const updateProduct = (productId, data) => async (dispatch) => {
   try {
     dispatch(setLoading());

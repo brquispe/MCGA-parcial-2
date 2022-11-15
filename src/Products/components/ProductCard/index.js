@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
-/**
- * @param {{ product: { _id: string; name: string; price: number; provider: { _id: string, name: string } }, onRemoveProduct: (productId: string) => boolean }}
- */
+
 const ProductCard = ({ product, onRemoveProduct }) => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
 
